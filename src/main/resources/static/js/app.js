@@ -146,10 +146,19 @@
         authMessage.textContent = "Account created. Signing you in…";
         authMessage.classList.add("success");
       }
-      const result = await api("/auth/login", { method: "POST", body: JSON.stringify(credentials) });
-      token = result.token;
-      localStorage.setItem("runlog.token", token);
-      await enterApplication(credentials.username, true);
+      try {
+        const result = await api("/auth/login", { method: "POST", body: JSON.stringify(credentials) });
+        token = result.token;
+        localStorage.setItem("runlog.token", token);
+        await enterApplication(credentials.username, true);
+      } catch (error) {
+        if (authMode === "register") {
+          authMessage.textContent = `Account created, but automatic sign-in failed. Use the Sign in tab with username ${credentials.username}.`;
+          authMessage.classList.add("success");
+        } else {
+          throw error;
+        }
+      }
     } catch (error) {
       authMessage.textContent = error.message || "Please check your details and try again.";
       authMessage.classList.remove("success");

@@ -3,6 +3,7 @@ package com.rc.runlog.controller;
 import com.rc.runlog.dto.UserRequest;
 import com.rc.runlog.dto.UserRespone;
 import com.rc.runlog.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,7 @@ public class UserController {
         this.userService = userService;
     }
     @PostMapping
-    public UserRespone createUser(@RequestBody UserRequest request){
+    public UserRespone createUser(@Valid @RequestBody UserRequest request){
         return userService.createUser(request);
     }
 }
