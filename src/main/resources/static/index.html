@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f6f2">
+  <title>Runlog — Your running, in rhythm</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/js/app.js" defer></script>
+</head>
+<body>
+  <main id="auth-view" class="auth-shell">
+    <section class="auth-story">
+      <a class="brand brand-light" href="/"><span class="brand-mark">r.</span><span>runlog</span></a>
+      <div class="story-copy">
+        <span class="eyebrow">YOUR MILES, YOUR MOMENT</span>
+        <h1>Make every<br>run <em>count.</em></h1>
+        <p>A calm place to track the miles, remember the feeling, and see how far you’ve come.</p>
+        <div class="story-stat"><span class="story-line"></span><span>One step at a time.</span></div>
+      </div>
+      <div class="story-orbit orbit-one"></div><div class="story-orbit orbit-two"></div>
+      <div class="auth-footer">Built for the long run <span>✳</span></div>
+    </section>
+    <section class="auth-panel">
+      <div class="auth-card">
+        <div class="auth-mobile-brand"><span class="brand-mark">r.</span><span>runlog</span></div>
+        <div class="auth-heading"><span class="eyebrow" id="auth-kicker">WELCOME BACK</span><h2 id="auth-title">Good to see you.</h2><p id="auth-subtitle">Sign in and pick up where you left off.</p></div>
+        <div class="auth-tabs" role="tablist" aria-label="Account options">
+          <button class="auth-tab active" type="button" data-mode="login" role="tab" aria-selected="true">Sign in</button>
+          <button class="auth-tab" type="button" data-mode="register" role="tab" aria-selected="false">Create account</button>
+        </div>
+        <form id="auth-form" class="form-stack">
+          <label id="username-wrap">Username<input id="username" name="username" autocomplete="username" placeholder="Your username" required></label>
+          <label id="email-wrap" class="is-hidden">Email address<input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com"></label>
+          <label>Password<div class="password-wrap"><input id="password" name="password" type="password" autocomplete="current-password" placeholder="At least 8 characters" required><button class="password-toggle" type="button" aria-label="Show password">Show</button></div></label>
+          <p id="auth-message" class="form-message" aria-live="polite"></p>
+          <button id="auth-submit" class="button button-dark button-wide" type="submit"><span>Sign in</span><span class="button-arrow">↗</span></button>
+        </form>
+        <p class="auth-note">Your running log is yours alone. Sign in to keep it that way.</p>
+      </div>
+    </section>
+  </main>
+
+  <div id="app-view" class="app-shell is-hidden">
+    <aside class="sidebar">
+      <a class="brand" href="#top"><span class="brand-mark">r.</span><span>runlog</span></a>
+      <div class="sidebar-label">YOUR SPACE</div>
+      <nav class="side-nav" aria-label="Main navigation">
+        <a class="nav-link active" href="#overview"><span class="nav-icon">◫</span> Overview</a>
+        <a class="nav-link" href="#runs-section"><span class="nav-icon">↗</span> My runs</a>
+      </nav>
+      <div class="sidebar-bottom"><div class="sidebar-quote"><span class="quote-mark">“</span><p>The run itself is the point.</p><span class="quote-by">— a good reminder</span></div><div class="sidebar-profile"><span id="avatar" class="avatar">R</span><span class="profile-copy"><strong id="profile-name">Runner</strong><small>Personal log</small></span><button id="logout-button" class="icon-button logout-button" type="button" title="Sign out" aria-label="Sign out">↗</button></div></div>
+    </aside>
+    <main class="workspace" id="top">
+      <header class="topbar"><div class="mobile-brand"><span class="brand-mark">r.</span><span>runlog</span></div><div class="topbar-greeting"><span class="eyebrow">YOUR RUNNING JOURNAL</span><span id="today-label" class="today-label"></span></div><div class="topbar-right"><span class="status-dot"></span><span>All caught up</span><button id="mobile-logout" class="icon-button" type="button" title="Sign out" aria-label="Sign out">↗</button></div></header>
+      <section id="overview" class="welcome-row"><div><span class="eyebrow">A LITTLE PROGRESS, OFTEN</span><h1>Keep your <em>pace.</em></h1><p class="welcome-sub">Every run leaves a mark. Here’s yours so far.</p></div><button class="button button-lime" id="new-run-button" type="button"><span class="plus">＋</span> Log a run</button></section>
+      <section class="stats-grid" aria-label="Running statistics">
+        <article class="stat-card stat-primary"><div class="stat-top"><span class="stat-label">TOTAL DISTANCE</span><span class="stat-icon">↗</span></div><div class="stat-value"><span id="total-distance">—</span><small>km</small></div><div class="stat-foot"><span class="stat-dot"></span> Across all your runs</div><div class="stat-spark spark-distance"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+        <article class="stat-card"><div class="stat-top"><span class="stat-label">RUNS LOGGED</span><span class="stat-icon icon-soft">◎</span></div><div class="stat-value"><span id="total-runs">—</span></div><div class="stat-foot">Showing up is everything</div><div class="stat-spark spark-runs"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+        <article class="stat-card"><div class="stat-top"><span class="stat-label">AVERAGE RUN</span><span class="stat-icon icon-soft">↗</span></div><div class="stat-value"><span id="average-distance">—</span><small>km</small></div><div class="stat-foot">Your typical distance</div></article>
+        <article class="stat-card"><div class="stat-top"><span class="stat-label">AVERAGE PACE</span><span class="stat-icon icon-soft">⌁</span></div><div class="stat-value"><span id="average-pace">—</span><small>min/km</small></div><div class="stat-foot">A rhythm of your own</div></article>
+        <article class="stat-card longest-card"><div class="stat-top"><span class="stat-label">LONGEST RUN</span><span class="stat-icon icon-soft">⟶</span></div><div class="stat-value"><span id="longest-distance">—</span><small>km</small></div><div id="longest-date" class="stat-foot">Your furthest yet</div></article>
+      </section>
+      <section class="runs-panel" id="runs-section">
+        <div class="section-head"><div><span class="eyebrow">THE MILES ADD UP</span><h2>Your runs <span id="run-count-label" class="count-pill">0</span></h2></div><button class="text-button" id="refresh-button" type="button"><span>↻</span> Refresh</button></div>
+        <div class="filter-bar"><div class="filter-title"><span class="filter-icon">⌕</span> Filter by date</div><label>From<input id="filter-from" type="date" aria-label="Start date"></label><span class="filter-dash">—</span><label>To<input id="filter-to" type="date" aria-label="End date"></label><button id="apply-filter" class="button button-outline" type="button">Apply</button><button id="clear-filter" class="clear-button" type="button">Clear</button></div>
+        <div id="runs-list" class="runs-list" aria-live="polite"><div class="loading-row"><span class="spinner"></span> Loading your runs</div></div>
+        <div class="pagination"><span id="page-label">Page 1</span><div><button id="prev-page" class="page-button" type="button" aria-label="Previous page">←</button><button id="next-page" class="page-button" type="button" aria-label="Next page">→</button></div></div>
+      </section>
+      <footer class="app-footer"><span>Keep going at your own pace.</span><span>Made for the miles <b>✳</b></span></footer>
+    </main>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div id="welcome-overlay" class="welcome-overlay is-hidden" aria-hidden="true"><div class="welcome-animation"><span class="welcome-overline">YOU’RE IN</span><div class="runner-track"><span class="runner">🏃</span><span class="track-line"></span></div><h2>Let’s get moving.</h2><p>Your next mile starts here.</p></div></div>
+  <dialog id="run-dialog" class="modal"><form id="run-form" method="dialog"><div class="modal-head"><div><span class="eyebrow">MAKE IT A MOMENT</span><h2 id="run-dialog-title">Log a run</h2></div><button class="modal-close" type="button" data-close="run-dialog" aria-label="Close">×</button></div><input id="run-id" type="hidden"><div class="modal-fields"><label>Date<input id="run-date" type="date" required></label><div class="field-row"><label>Distance <small>km</small><input id="run-distance" type="number" min="0.01" step="0.01" placeholder="5.00" required></label><label>Duration <small>minutes</small><input id="run-duration" type="number" min="1" step="1" placeholder="30" required></label></div><label>Notes <span class="optional">optional</span><textarea id="run-notes" rows="3" maxlength="500" placeholder="How did it feel?"></textarea></label><p id="run-message" class="form-message" aria-live="polite"></p></div><div class="modal-actions"><button class="button button-quiet" type="button" data-close="run-dialog">Cancel</button><button class="button button-dark" type="submit" id="save-run">Save run <span class="button-arrow">↗</span></button></div></form></dialog>
+  <dialog id="detail-dialog" class="modal detail-modal"><div class="modal-head"><div><span class="eyebrow">A MOMENT IN YOUR LOG</span><h2>Run details</h2></div><button class="modal-close" type="button" data-close="detail-dialog" aria-label="Close">×</button></div><div id="run-detail" class="detail-content"></div></dialog>
+</body>
+</html>

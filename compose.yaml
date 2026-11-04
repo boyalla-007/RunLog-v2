@@ -1,0 +1,21 @@
+services:
+  runlog:
+    build: .
+    container_name: runlog-app
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_MONGODB_URI: mongodb://mongodb:27017/runlog
+      JWT_SECRET: ${JWT_SECRET:?Set JWT_SECRET before starting Compose}
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:9.0
+    container_name: runlog-mongodb
+    volumes:
+      - runlog-data:/data/db
+
+volumes:
+  runlog-data:
